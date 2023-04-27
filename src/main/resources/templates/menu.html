@@ -7,9 +7,85 @@
 </head>
 <body>
 <h1>My Super Fancy Spa</h1>
+<!-- CLIENT PROFILE
+Add an h2 that says “My profile”.
+
+Add a p tag and use th:text to bring in the value of name.
+
+Add a p tag and use th:text to bring in the value of skintype.
+
+Add a p tag and use th:text to bring in the value of manipedi.
+ -->
 <div id = "clientProfile">
+    <h2>My Profile</h2>
+    <p th:text="${name}"></p>
+    <p th:text="${skintype}"></p>
+    <p th:text="${manipedi}"></p>
+
 </div>
 <div id = "servicesMenu">
+    <!-- 11.11.3 list all Appropriate Traeatments
+    Create Table
+    remember to add a model attribute to SpaDayController so data can be spitted out on the html-->
+
+    <!--11.11.4 Mani or Pedi
+        Use th:if to determine if the value of manipedi is a "manicure" or "pedicure".
+
+If the value of manipedi is "manicure", the div element containing the h3 that says "Manicure"
+needs to be on the page and
+ the p tag needs to be replaced with
+  the fragment of the manicure description from fragments.html.
+
+If the value of manipedi is "pedicure", the div element containing the h3 that says "Pedicure"
+ needs to be on the page and
+ the p tag needs to be replaced with
+  the fragment of the pedicure description from fragments.html.
+    -->
+    <table>
+        <tr><th>Appropriate Facials</th></tr>
+            <!-- iterate the rows template block code -->
+            <th:block th:each="fac : ${appropriateFacials}">
+                <!-- inject text using thymeleaf (fact 'tr' =table row)-->
+                <tr>
+                    <td th:text="${fac}"></td>
+                </tr>
+            </th:block>
+        <!--looping without the th:block:
+            <tr><th>Appropriate Facials</th></tr>
+            <tr>
+                    <td th:text="${fac}"></td>
+                </tr> -->
+
+        </tbody>
+    </table>
+    <th:block th:if="${manipedi} == 'manicure' or ${manipedi} == 'both'"><!--added bonus mission for both options-->
+        <h3>Manicure</h3>
+        <p th:replace="fragments :: manicureDescription"></p>
+    </th:block>
+
+    <th:block th:if="${manipedi} == 'pedicure' or ${manipedi} == 'both'">
+        <h3>Pedicure</h3>
+        <p th:replace="fragments :: pedicureDescription"></p>
+    </th:block>
+
 </div>
+<!--Bonus Mission
+        1.Modify styles.css to get some CSS practice!
+            Try add a footer with square shaped div elements.
+            Each square should be a different color for different available nail polishes.
+
+        2.Modify the form to allow the user to select either a manicure or pedicure or both.
+            If the user selects both, display both the manicure and pedicure descriptions on the Spa Menu page.
+
+        3.Work with routes and paths to display the spa menu page on a separate route from the form.
+-->
+<!--<footer>
+    <div class="nail-polish green-polish"></div>
+    <div class="nail-polish black-polish"></div>
+    <div class="nail-polish purple-polish"></div>
+    <div class="nail-polish green-polish"></div>
+    <div class="nail-polish black-polish"></div>
+    <div class="nail-polish purple-polish"></div>
+</footer>-->
 </body>
 </html>

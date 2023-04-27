@@ -1,5 +1,5 @@
 body {
-    background-color: pink;
+    background-color: purple;
 }
 
 div {
@@ -24,3 +24,27 @@ table {
             padding: 10px;
             text-align: center;
 }
+
+/*footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: justify;
+}
+
+.nail-polish {
+    margin: auto;
+    width; 50px;
+    background-color: #000;
+}
+
+.green-polish{
+    background-color: green;
+}
+
+.black-polish{
+    background-color: black;
+}
+
+.purple-polish{
+    background-color: purple;
+}*/
